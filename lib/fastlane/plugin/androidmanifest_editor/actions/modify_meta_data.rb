@@ -1,6 +1,6 @@
 module Fastlane
   module Actions
-    class CiBuildNumberAction < Action
+    class ModifyMetaDataAction < Action
       def self.run(params)
         manifest_file = params[:manifest_file]
         meta_info = params[:meta_info]
