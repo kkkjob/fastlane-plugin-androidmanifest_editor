@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'renfx@rgbvr.com'
 
   spec.summary       = 'edit meta-data in AndroidManifest.xml'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-androidmanifest_editor"
+  spec.homepage      = "https://github.com/dearsatan/fastlane-plugin-androidmanifest_editor"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
