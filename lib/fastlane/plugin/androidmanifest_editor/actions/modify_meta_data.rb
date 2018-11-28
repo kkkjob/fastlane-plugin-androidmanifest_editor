@@ -9,7 +9,7 @@ module Fastlane
         doc = File.open(manifest_file) { |f|
           @doc = Nokogiri::XML(f)
 
-          meta_info.each { |meta_key, mata_value|
+          meta_info.each { |meta_key, meta_value|
             node_found = false
             @doc.css("application meta-data").each do |response_node|
               if response_node["android:name"] == meta_key
@@ -22,13 +22,26 @@ module Fastlane
             end
 
             if not node_found
-              @doc.xpath("//application//activity").last.add_next_sibling "<meta-data android:name=\"#{meta_key}\" android:value=\"#{meta_value}\" />"
+              @doc.xpath("//application//activity").last.add_next_sibling "\n<meta-data android:name=\"#{meta_key}\" android:value=\"#{meta_value}\" />\n"
               UI.message("Insert new node with value #{meta_value} into xml file")
             end
           }
           
           File.write(manifest_file, @doc.to_xml)
         }
+      end
+
+      def self.available_options
+        [
+          FastlaneCore::ConfigItem.new(key: :manifest_file,
+                               description: "Path of AndroidManifest.xml",
+                                  optional: false,
+                                      type: String),
+          FastlaneCore::ConfigItem.new(key: :meta_info,
+                               description: "hash of mata key-values",
+                                  optional: false,
+                                      type: Hash)
+        ]
       end
 
       def self.description
