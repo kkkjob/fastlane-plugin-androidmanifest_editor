@@ -18,9 +18,20 @@ edit meta-data in AndroidManifest.xml
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
+```
+modify_meta_data (
+  manifest_file: 'src/main/AndroidManifest.xml',
+  meta_info: {
+    'WEIXIN_APP_ID' => weixin_app_id,
+    'BUGLY_APPID' => bugly_app_id
+  }
+)
 
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+modify_intent_scheme (
+  manifest_file: 'src/main/AndroidManifest.xml',
+  scheme: "xingyue"
+)
+```
 
 ## Run tests for this plugin
 
